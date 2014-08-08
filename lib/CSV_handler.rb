@@ -1,21 +1,26 @@
 require 'csv'
+require_relative 'find'
 
 class CSVHandler
 
-  def initialize
+  attr_accessor :contents
 
+  include Find
+
+  def initialize
+    @contents = {}
   end
 
   def load_content(file_name="event_attendees.csv")
     if file_exist?("data/" +"#{file_name}")
-      CSV.open "data/" + "#{file_name}", headers: true, header_converters: :symbol
+      @contents = CSV.open "data/" + "#{file_name}", headers: true, header_converters: :symbol
     else
       "File does not exist."
     end
   end
 
   def print_content(content)
-    puts content
+    puts contents
   end
 
   def file_exist?(file_name)
@@ -27,5 +32,6 @@ end
 if __FILE__ == $0
   handler = CSVHandler.new
   content = handler.load_content
-  handler.print_content(content)
+  results = handler.find_by_first_name("Allison")
+  puts results
 end
