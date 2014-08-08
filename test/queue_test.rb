@@ -13,15 +13,6 @@ class QueueTest < Minitest::Test
     assert_equal 0, @queue.results.size
   end
 
-  def test_find_by_first_name
-    @queue.results[:first_name] = 'Alice'
-    assert_equal "Alice", @queue.find_by_first_name("Alice")
-  end
 
-  def test_find_multiple_first_names
-    @queue.results[:first_name] = 'Alice'
-    @queue.results[:first_name] += 'Alice'
-    puts @queue.results[:first_name]
-  end
 
 end

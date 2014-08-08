@@ -30,8 +30,10 @@ class CSVHandler
 end
 
 if __FILE__ == $0
+  require_relative 'queue'
   handler = CSVHandler.new
+  queue = Queue.new
   content = handler.load_content
-  results = handler.find_by_first_name("Allison")
-  puts results
+  queue.results = handler.find_by_first_name("Allison")
+  puts queue.results.size
 end
