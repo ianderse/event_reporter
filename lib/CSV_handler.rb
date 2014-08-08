@@ -8,7 +8,7 @@ class CSVHandler
 
   def load_content(file_name="event_attendees.csv")
     if file_exist?("data/" +"#{file_name}")
-      CSV.open "data/" + "#{file_name}", headers: true
+      CSV.open "data/" + "#{file_name}", headers: true, header_converters: :symbol
     else
       "File does not exist."
     end
