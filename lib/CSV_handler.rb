@@ -8,7 +8,7 @@ class CSVHandler
   include Find
 
   def initialize
-    #@contents = {}
+
   end
 
   def load_content(file_name="event_attendees.csv")
@@ -36,12 +36,4 @@ if __FILE__ == $0
   handler.load_content
   # queue.results = handler.find_by(:RegDate)
   # puts queue.results.size
-  # results = []
-  # handler.contents.each do |row|
-  #   if row[:RegDate]
-  #     results << row
-  #   end
-  # end
-  #
-  # puts results
 end

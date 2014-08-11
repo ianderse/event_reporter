@@ -7,4 +7,8 @@ class Queue
     @results = {}
   end
 
+  def clear
+    @results = Hash.new
+  end
+
 end
