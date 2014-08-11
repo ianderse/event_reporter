@@ -9,6 +9,10 @@ class Messager
     command
   end
 
+  def queue_loaded
+    @output.puts "Queue loaded with results of the search."
+  end
+
   def list_commands
     @output.puts "\nList of commands"
     @output.puts "help - displays this list."
@@ -28,6 +32,10 @@ class Messager
 
   def file_does_not_exist
     @output.puts "File does not exist."
+  end
+
+  def invalid_find
+    @output.puts "Please input find parameters (find <attribute> <criteria>)."
   end
 
   def quit

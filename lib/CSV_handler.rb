@@ -8,19 +8,15 @@ class CSVHandler
   include Find
 
   def initialize
-
+    @contents = []
   end
 
   def load_content(file_name="event_attendees.csv")
     if file_exist?("data/" +"#{file_name}")
-      @contents = CSV.open "data/" + "#{file_name}", headers: true, header_converters: :symbol, return_headers: true
+      @contents = CSV.open "data/" + "#{file_name}", headers: true, header_converters: :symbol
     else
       "File does not exist."
     end
-  end
-
-  def print_content(content)
-    puts contents
   end
 
   def file_exist?(file_name)

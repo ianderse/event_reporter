@@ -1,10 +1,13 @@
 require_relative 'messager'
 require_relative 'CSV_handler'
+require_relative 'queue'
 
 class EventReporter
 
   def initialize(input, output)
     @messager = Messager.new(input, output)
+    @queue = Queue.new
+    @handler = CSVHandler.new
     @input = input
     @choice = []
   end
@@ -25,6 +28,13 @@ class EventReporter
       help(@choice[1])
     when @choice[0] == 'load' || @choice[0] == 'l'
       load_command(@choice[1])
+    when @choice[0] == 'find'
+      if @choice[1] == nil
+        @messager.invalid_find
+      else
+        @queue.results = @handler.find_by(@choice[1].to_sym, @choice[2])
+        @messager.queue_loaded
+      end
     when quit?
       @messager.quit
       return 0
@@ -32,15 +42,15 @@ class EventReporter
   end
 
   def load_command(param="event_attendees.csv")
-    @handler = CSVHandler.new
     if @handler.load_content(param) == "File does not exist."
       @messager.file_does_not_exist
     else
+      @handler.load_content
       @messager.content_loaded
     end
   end
 
-  def help(param=nil, param2=nil)
+  def help(param=nil)
     case param
     when nil
       @messager.list_commands
@@ -85,10 +95,6 @@ class EventReporter
 
   def quit?
     @choice.join == 'q' || @choice.join == 'quit'
-  end
-
-  def help?
-    @choice.join == 'h' || @choice.join == 'help'
   end
 
 end

@@ -2,8 +2,8 @@ module Find
 
   def find_by(param, search)
     results = []
-    contents.each do |row|
-      if row[param] == search
+    self.contents.each do |row|
+      if row[param].downcase.strip == search
         results << row
       end
     end
