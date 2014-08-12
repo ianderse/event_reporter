@@ -1,5 +1,5 @@
 class Messager
-  def initialize(input, output)
+  def initialize(input=$stdin, output=$stdout)
     @input = input
     @output = output
   end
@@ -11,6 +11,14 @@ class Messager
 
   def queue_loaded
     @output.puts "Queue loaded with results of the search."
+  end
+
+  def print_queue(queue)
+    @output.puts queue
+  end
+
+  def queue_cleared
+    @output.puts "Queue cleared."
   end
 
   def list_commands

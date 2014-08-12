@@ -1,3 +1,4 @@
+require_relative '../lib/messager'
 
 class Queue
 
@@ -9,10 +10,6 @@ class Queue
 
   def clear
     @results = Hash.new
-  end
-
-  def print
-    
   end
 
 end

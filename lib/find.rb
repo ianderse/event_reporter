@@ -1,10 +1,10 @@
 module Find
 
   def find_by(param, search)
-    results = []
-    self.contents.each do |row|
-      if row[param] == search
-        results << row
+    # results = []
+    self.contents.map do |row|
+      row if row[param].to_s.strip.downcase == search
+        # results << row
       end
     end
 

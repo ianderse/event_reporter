@@ -23,7 +23,8 @@ class EventReporter
   end
 
   #lets move all user command processing into a helper module at some point
-
+  #create better name for @choice[0] here, more readable.
+  
   def process_user_commands
     case
     when @choice[0] == 'help' || @choice[0] == 'h'
@@ -40,8 +41,11 @@ class EventReporter
     when @choice[0] == 'queue'
       if @choice[1] == nil
         @messager.invalid_queue_command
-      else
-        #
+      elsif @choice[1] == 'print'
+        @messager.print_queue(@queue.results)
+      elsif @choice[1] == 'clear'
+        @queue.clear
+        @messager.queue_cleared
       end
     when quit?
       @messager.quit

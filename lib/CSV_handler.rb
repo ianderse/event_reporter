@@ -1,6 +1,8 @@
 require 'csv'
 require_relative 'find'
 
+#need to clean the headers by downcasing all of them
+
 class CSVHandler
 
   attr_accessor :contents
