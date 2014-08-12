@@ -22,6 +22,8 @@ class EventReporter
     return 0
   end
 
+  #lets move all user command processing into a helper module at some point
+
   def process_user_commands
     case
     when @choice[0] == 'help' || @choice[0] == 'h'
@@ -34,6 +36,12 @@ class EventReporter
       else
         @queue.results = @handler.find_by(@choice[1].to_sym, @choice[2])
         @messager.queue_loaded
+      end
+    when @choice[0] == 'queue'
+      if @choice[1] == nil
+        @messager.invalid_queue_command
+      else
+        #
       end
     when quit?
       @messager.quit
@@ -55,7 +63,7 @@ class EventReporter
     when nil
       @messager.list_commands
     when "queue"
-      queue
+      help_queue
     when "load"
       @messager.explain_load
     when "find"
@@ -63,7 +71,7 @@ class EventReporter
     end
   end
 
-  def queue
+  def help_queue
     if @choice[3] != nil
       param = @choice[2]+@choice[3]
     else

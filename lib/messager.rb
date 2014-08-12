@@ -38,6 +38,10 @@ class Messager
     @output.puts "Please input find parameters (find <attribute> <criteria>)."
   end
 
+  def invalid_queue_command
+    @output.puts "Please enter valid queue command.  'help queue' for help."
+  end
+
   def quit
     @output.puts "Thank you for using EventReporter."
     @output.puts "Goodbye."
