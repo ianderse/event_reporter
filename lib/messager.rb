@@ -46,6 +46,14 @@ class Messager
     @output.puts "Please input find parameters (find <attribute> <criteria>)."
   end
 
+  def invalid_search
+    @output.puts "Invalid search entered, please try again."
+  end
+
+  def no_directory_loaded
+    @output.puts "No directory loaded, please use load command first."
+  end
+
   def invalid_queue_command
     @output.puts "Please enter valid queue command.  'help queue' for help."
   end

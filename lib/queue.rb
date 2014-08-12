@@ -1,4 +1,4 @@
-require_relative '../lib/messager'
+require_relative '../lib/require_helper'
 
 class Queue
 

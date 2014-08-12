@@ -1,14 +1,13 @@
 module Find
 
   def find_by(param, search)
-    # results = []
-    self.contents.map do |row|
-      row if row[param].to_s.strip.downcase == search
-        # results << row
+    if directory.first.methods.include?(param.to_sym)
+      directory.select do |contact|
+          contact.send(param.to_sym).downcase == search
       end
+    else
+      return "invalid"
     end
-
-    return results
   end
 
 end

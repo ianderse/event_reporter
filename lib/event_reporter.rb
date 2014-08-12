@@ -1,13 +1,11 @@
-require_relative 'messager'
-require_relative 'CSV_handler'
-require_relative 'queue'
+require_relative '../lib/require_helper'
 
 class EventReporter
 
   def initialize(input, output)
     @messager = Messager.new(input, output)
     @queue = Queue.new
-    @handler = CSVHandler.new
+    @directory = Directory.new
     @input = input
     @choice = []
   end
@@ -24,7 +22,7 @@ class EventReporter
 
   #lets move all user command processing into a helper module at some point
   #create better name for @choice[0] here, more readable.
-  
+
   def process_user_commands
     case
     when @choice[0] == 'help' || @choice[0] == 'h'
@@ -32,13 +30,23 @@ class EventReporter
     when @choice[0] == 'load' || @choice[0] == 'l'
       load_command(@choice[1])
     when @choice[0] == 'find'
+      #move to a find helper method
       if @choice[1] == nil
         @messager.invalid_find
       else
-        @queue.results = @handler.find_by(@choice[1].to_sym, @choice[2])
-        @messager.queue_loaded
+        if @directory.directory != nil
+          if @directory.find_by(@choice[1].to_sym, @choice[2]) != "invalid"
+            @queue.results = @directory.find_by(@choice[1].to_sym, @choice[2])
+            @messager.queue_loaded
+          else
+            @messager.invalid_search
+          end
+        else
+          @messager.no_directory_loaded
+        end
       end
     when @choice[0] == 'queue'
+      #move to a queue helper method
       if @choice[1] == nil
         @messager.invalid_queue_command
       elsif @choice[1] == 'print'
@@ -54,10 +62,10 @@ class EventReporter
   end
 
   def load_command(param="event_attendees.csv")
-    if @handler.load_content(param) == "File does not exist."
+    if !@directory.file_exist?("data/" +"#{param}")
       @messager.file_does_not_exist
     else
-      @handler.load_content
+      @directory.load_content
       @messager.content_loaded
     end
   end
