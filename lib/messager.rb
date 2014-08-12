@@ -14,7 +14,7 @@ class Messager
   end
 
   def print_queue(queue)
-    @output.puts queue
+    @output.puts queue.create_table
   end
 
   def queue_cleared

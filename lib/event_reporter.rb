@@ -50,7 +50,7 @@ class EventReporter
       if @choice[1] == nil
         @messager.invalid_queue_command
       elsif @choice[1] == 'print'
-        @messager.print_queue(@queue.results)
+        @messager.print_queue(@queue)
       elsif @choice[1] == 'clear'
         @queue.clear
         @messager.queue_cleared
