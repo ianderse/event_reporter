@@ -50,16 +50,36 @@ class ContactTest < Minitest::Test
     assert_equal "12345", contact.clean_zip("12345")
   end
 
-  def test_it_can_clean_a_phone_number
-    skip
+  def test_it_can_clean_a_nil_phone_number
+    assert_equal "No Phone", contact.clean_phone(nil)
   end
 
-  def test_it_can_clean_an_email_address
-    skip
+  def test_it_can_clean_a_valid_phone_number
+    assert_equal "123-123-1234", contact.clean_phone("123-123-1234")
   end
 
-  def test_it_can_clean_a_street_address
-    skip
+  def test_it_can_clean_an_invalid_phone_number
+    assert_equal "Invalid Phone Number", contact.clean_phone("123-123-12343324124")
+  end
+
+  def test_it_can_clean_a_good_email_address
+    assert_equal "example@example.com", contact.clean_email("example@example.com")
+  end
+
+  def test_it_can_clean_a_nil_email_address
+    assert_equal "No Email", contact.clean_email(nil)
+  end
+
+  def test_it_can_clean_an_invalid_email_address
+    assert_equal "Invalid Email", contact.clean_email("exampleexample.com")
+  end
+
+  def test_it_can_clean_a_nil_street_address
+    assert_equal "No Street", contact.clean_street(nil)
+  end
+
+  def test_it_can_clean_a_valid_street_address
+    assert_equal "123 apple st.", contact.clean_street("123 apple st.")
   end
 
 end

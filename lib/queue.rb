@@ -17,7 +17,7 @@ class Queue
     rows = []
     rows << ["LAST NAME", "FIRST NAME", "EMAIL", "ZIPCODE", "CITY", "STATE", "ADDRESS", "PHONE"]
     results.each do |result|
-      rows << [result.last_name, result.first_name]
+      rows << [result.last_name, result.first_name, result.email, result.zipcode, result.city, result.state, result.street, result.homephone]
     end
 
     table = Terminal::Table.new :rows => rows
