@@ -27,4 +27,8 @@ class QueueTest < Minitest::Test
     assert_equal 0, @queue.results.size
   end
 
+  def test_it_can_print_the_queue
+    
+  end
+
 end

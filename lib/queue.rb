@@ -11,4 +11,8 @@ class Queue
     @results = Hash.new
   end
 
+  def print
+    
+  end
+
 end
