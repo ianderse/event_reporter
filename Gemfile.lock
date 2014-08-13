@@ -1,0 +1,18 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ValidateEmail (1.0.1)
+    colorize (0.7.3)
+    minitest (5.4.0)
+    phone (1.2.3)
+    terminal-table (1.4.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ValidateEmail
+  colorize
+  minitest
+  phone
+  terminal-table
