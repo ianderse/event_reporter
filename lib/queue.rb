@@ -23,8 +23,8 @@ class Queue
     rows = results.map do |result|
       [result.last_name.cyan, result.first_name.cyan, result.email.cyan, result.zipcode.cyan, result.city.cyan, result.state.cyan, result.street.cyan, result.homephone.cyan]
     end
-    rows.unshift(["LAST NAME".blue.bold, "FIRST NAME".blue.bold, "EMAIL".blue.bold, "ZIPCODE".blue.bold, "CITY".blue.bold, "STATE".blue.bold, "ADDRESS".blue.bold, "PHONE".blue.bold])
-    table = Terminal::Table.new :rows => rows
+    #rows.unshift(["LAST NAME".blue.bold, "FIRST NAME".blue.bold, "EMAIL".blue.bold, "ZIPCODE".blue.bold, "CITY".blue.bold, "STATE".blue.bold, "ADDRESS".blue.bold, "PHONE".blue.bold])
+    table = Terminal::Table.new :headings => ["LAST NAME".blue.bold, "FIRST NAME".blue.bold, "EMAIL".blue.bold, "ZIPCODE".blue.bold, "CITY".blue.bold, "STATE".blue.bold, "ADDRESS".blue.bold, "PHONE".blue.bold], :rows => rows
   end
 
   def save(save_file)

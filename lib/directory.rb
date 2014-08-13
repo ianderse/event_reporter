@@ -25,12 +25,3 @@ class Directory
   end
 
 end
-
-if __FILE__ == $0
-
-  directory = Directory.new
-  queue = Queue.new
-  directory.load_content
-  queue.results = directory.find_by(:first_name, "allison")
-  puts queue.results.size
-end

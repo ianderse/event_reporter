@@ -89,15 +89,19 @@ module UserCommands
 
   def find_by
     element = @choice[2..-1].join(' ')
-      if @directory.find_by(attribute.to_sym, element) != "invalid"
-        @queue.results = @directory.find_by(attribute.to_sym, element)
-        @messager.queue_loaded
-      else
-        @messager.invalid_search
-      end
+
+    if @directory.find_by(attribute.to_sym, element) != "invalid"
+      @queue.results = @directory.find_by(attribute.to_sym, element)
+      @messager.queue_loaded
+    else
+      @messager.invalid_search
+    end
+    
   end
 
   def loader(file_name = "event_attendees.csv")
+    #!@directory.file_exist?("data/" +"#{file_name}")? ? @messager.file_does_not_exist : begin @directory.load_content(file_name); @messager.content_loaded end
+
     if !@directory.file_exist?("data/" +"#{file_name}")
       @messager.file_does_not_exist
     else
