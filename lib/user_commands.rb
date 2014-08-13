@@ -19,6 +19,7 @@ module UserCommands
     when quit?
       @messager.quit
       return 0
+    else @messager.invalid_command
     end
   end
 
@@ -96,7 +97,7 @@ module UserCommands
     else
       @messager.invalid_search
     end
-    
+
   end
 
   def loader(file_name = "event_attendees.csv")

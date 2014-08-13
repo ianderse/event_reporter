@@ -68,6 +68,9 @@ class Messager
     @output.puts "Invalid search entered, please try again."
   end
 
+  def invalid_command
+    @output.puts "Invalid command."
+  end
   def invalid_save
     @output.puts "Invalid save format, please use format 'save to <filename>'"
   end
