@@ -10,8 +10,12 @@ module UserCommands
     case
     when command == 'help' || command == 'h'
       help(attribute)
-    when command == 'load' || command == 'l'
-      load_command(attribute)
+    when command == 'load'
+      if attribute == nil
+        load_command
+      else
+        load_command(attribute)
+      end
     when command == 'find'
       find_command
     when command == 'queue'
@@ -50,12 +54,13 @@ module UserCommands
   end
 
   def find_command
+    find_element = @choice[2..-1].join(' ')
     if attribute == nil
       @messager.invalid_find
     else
       if @directory.directory != nil
-        if @directory.find_by(attribute.to_sym, criteria) != "invalid"
-          @queue.results = @directory.find_by(attribute.to_sym, criteria)
+        if @directory.find_by(attribute.to_sym, find_element) != "invalid"
+          @queue.results = @directory.find_by(attribute.to_sym, find_element)
           @messager.queue_loaded
         else
           @messager.invalid_search
@@ -66,11 +71,11 @@ module UserCommands
     end
   end
 
-  def load_command(param="event_attendees.csv")
-    if !@directory.file_exist?("data/" +"#{param}")
+  def load_command(file_name = "event_attendees.csv")
+    if !@directory.file_exist?("data/" +"#{file_name}")
       @messager.file_does_not_exist
     else
-      @directory.load_content
+      @directory.load_content(file_name)
       @messager.content_loaded
     end
   end

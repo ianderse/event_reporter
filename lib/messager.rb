@@ -45,6 +45,7 @@ class Messager
     explain_queue_print_by
     explain_queue_save_to
     explain_find
+    @output.puts
   end
 
   def content_loaded

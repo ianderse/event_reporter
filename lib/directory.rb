@@ -12,17 +12,12 @@ class Directory
 
   end
 
-  def load_content(file_name="event_attendees.csv")
-    if file_exist?("data/" +"#{file_name}")
-      csv_data = CSV.open "data/" + "#{file_name}", headers: true, header_converters: :symbol
+  def load_content(file_name)
+    csv_data = CSV.open "data/" + "#{file_name}", headers: true, header_converters: :symbol
 
-      @directory = csv_data.map do |row|
-                      Contact.new(row)
-                  end
-
-    else
-      "File does not exist."
-    end
+    @directory = csv_data.map do |row|
+                    Contact.new(row)
+                end
   end
 
   def file_exist?(file_name)

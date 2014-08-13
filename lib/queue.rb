@@ -30,9 +30,9 @@ class Queue
 
   def save(save_file)
 
-    Dir.mkdir("output") unless Dir.exists?("output")
+    Dir.mkdir("data") unless Dir.exists?("data")
 
-    filename = "output/#{save_file}"
+    filename = "data/#{save_file}"
 
     File.open(filename,'w') do |file|
       file.puts "first_Name,last_Name,Email_Address,HomePhone,Street,City,State,Zipcode"
