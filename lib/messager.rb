@@ -6,7 +6,6 @@ class Messager
 
   def welcome
     @output.puts "Welcome to EventReporter"
-    command
   end
 
   def queue_loaded
@@ -39,13 +38,13 @@ class Messager
     @output.puts "\nList of commands"
     @output.puts "help - displays this list."
     @output.puts "help <command> - description of how to use the command."
-    @output.puts "load <filename> - loads a CSV file from <filename> path, if no path given, it loads data/event_attendees.csv."
-    @output.puts "queue count - output how many records are in the current queue."
-    @output.puts "queue clear - empty the queue"
-    @output.puts "queue print - print out a tab-delimited data table with a header row."
-    @output.puts "queue print by <attribute> - print data table sorted by the specified attribute (ie. zipcode)."
-    @output.puts "queue save to <filename.csv> - export current queue to specified filename as a CSV file."
-    @output.puts "find <attribute> <criteria> - load the queue with all records matching criteria for the given attribute (ie. find zipcode 20011).\n\n"
+    explain_load
+    explain_queue_count
+    explain_queue_clear
+    explain_queue_print
+    explain_queue_print_by
+    explain_queue_save_to
+    explain_find
   end
 
   def content_loaded
@@ -87,11 +86,11 @@ class Messager
 
   def explain_queue
     @output.puts "List of queue commands"
-    @output.puts "queue count - output how many records are in the current queue."
-    @output.puts "queue clear - empty the queue"
-    @output.puts "queue print - print out a tab-delimited data table with a header row."
-    @output.puts "queue print by <attribute> - print data table sorted by the specified attribute (ie. zipcode)."
-    @output.puts "queue save to <filename.csv> - export current queue to specified filename as a CSV file."
+    explain_queue_count
+    explain_queue_clear
+    explain_queue_print
+    explain_queue_print_by
+    explain_queue_save_to
   end
 
   def explain_queue_count

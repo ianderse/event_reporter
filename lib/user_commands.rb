@@ -1,6 +1,6 @@
 module UserCommands
   attr_reader :command, :attribute, :criteria, :criteria_two
-  
+
   def process_user_commands
     @command = @choice[0]
     @attribute = @choice[1]
@@ -15,7 +15,6 @@ module UserCommands
     when command == 'find'
       find_command
     when command == 'queue'
-      #move to a queue helper method
       queue_command
     when quit?
       @messager.quit
@@ -24,21 +23,23 @@ module UserCommands
   end
 
   def queue_command
-    if attribute == nil
+    case attribute
+    when nil
       @messager.invalid_queue_command
-    elsif attribute == 'print'
+    when 'print'
       if criteria.nil?
         @messager.print_queue(@queue)
       elsif criteria == 'by'
         #sort by @choice[3]
+        #not finished
         @messager.print_sorted_queue(@queue, criteria_two)
       end
-    elsif attribute == 'count'
+    when 'count'
       @messager.queue_size(@queue.results)
-    elsif attribute == 'clear'
+    when 'clear'
       @queue.clear
       @messager.queue_cleared
-    elsif attribute == 'save'
+    when 'save'
       if criteria.nil?
         @messager.invalid_save
       else
