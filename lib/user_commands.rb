@@ -11,11 +11,7 @@ module UserCommands
     when command == 'help' || command == 'h'
       help(attribute)
     when command == 'load'
-      if attribute == nil
-        load_command
-      else
-        load_command(attribute)
-      end
+      load_command
     when command == 'find'
       find_command
     when command == 'queue'
@@ -26,52 +22,82 @@ module UserCommands
     end
   end
 
+  def load_command
+    if @attribute == nil
+      loader
+    else
+      loader(@attribute)
+    end
+  end
+
   def queue_command
     case attribute
     when nil
       @messager.invalid_queue_command
     when 'print'
-      if criteria.nil?
-        @messager.print_queue(@queue)
-      elsif criteria == 'by'
-        #sort by @choice[3]
-        #not finished
-        @messager.print_sorted_queue(@queue, criteria_two)
-      end
+      queue_print
     when 'count'
       @messager.queue_size(@queue.results)
     when 'clear'
       @queue.clear
       @messager.queue_cleared
     when 'save'
-      if criteria.nil?
-        @messager.invalid_save
-      else
-        @queue.save(criteria_two)
-        @messager.queue_saved
-      end
+      queue_save
     end
+  end
+
+  def queue_print
+    if criteria.nil?
+      @messager.print_queue(@queue)
+    elsif criteria == 'by'
+      queue_print_by
+    end
+  end
+
+  def queue_print_by
+    if has_directory_methods? && directory_is_populated?
+      @messager.print_sorted_queue(@queue, criteria_two)
+    else
+      @messager.invalid_print
+    end
+  end
+
+  def has_directory_methods?
+    @directory.directory.first.methods.include?(criteria_two.to_sym)
+  end
+
+  def queue_save
+    if criteria.nil?
+      @messager.invalid_save
+    else
+      @queue.save(criteria_two)
+      @messager.queue_saved
+    end
+  end
+
+  def directory_is_populated?
+    @directory.directory != nil
   end
 
   def find_command
-    find_element = @choice[2..-1].join(' ')
     if attribute == nil
       @messager.invalid_find
     else
-      if @directory.directory != nil
-        if @directory.find_by(attribute.to_sym, find_element) != "invalid"
-          @queue.results = @directory.find_by(attribute.to_sym, find_element)
-          @messager.queue_loaded
-        else
-          @messager.invalid_search
-        end
-      else
-        @messager.no_directory_loaded
-      end
+      directory_is_populated? ? find_by : @messager.no_directory_loaded
     end
   end
 
-  def load_command(file_name = "event_attendees.csv")
+  def find_by
+    element = @choice[2..-1].join(' ')
+      if @directory.find_by(attribute.to_sym, element) != "invalid"
+        @queue.results = @directory.find_by(attribute.to_sym, element)
+        @messager.queue_loaded
+      else
+        @messager.invalid_search
+      end
+  end
+
+  def loader(file_name = "event_attendees.csv")
     if !@directory.file_exist?("data/" +"#{file_name}")
       @messager.file_does_not_exist
     else

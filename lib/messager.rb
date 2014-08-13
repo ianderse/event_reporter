@@ -23,7 +23,7 @@ class Messager
   def print_sorted_queue(queue, param)
     #can just do this from event_reporter?
     queue.sort_queue(param)
-    @output.puts queue.create_table
+    print_queue(queue)
   end
 
   def queue_size(queue)
@@ -54,6 +54,10 @@ class Messager
 
   def file_does_not_exist
     @output.puts "File does not exist."
+  end
+
+  def invalid_print
+    @output.puts "Invalid print command."
   end
 
   def invalid_find

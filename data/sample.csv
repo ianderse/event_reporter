@@ -1,14 +1,17 @@
-first_Name,last_Name,Email_Address,HomePhone,Street,City,State,Zipcode
-Michael,Panek,dntisler@jumpstartlab.com,801-362-6000,1434 Wilson Ave.,Salt lake city,UT,84105
-Kate,Cebulski,orazrya1@jumpstartlab.com,801-550-5000,1033 Barbara Pl Apt 2,Salt lake city,UT,84102
-Megan,Engel,bgc64@jumpstartlab.com,8015505000,219 Elizabeth St.,Salt lake city,UT,84102
-Kristen,Gilbert,tpollins6@jumpstartlab.com,8015505000,1343 Ashwood Circle,Salt lake city,UT,84121
-Student,Myett,wjang@jumpstartlab.com,8015505000,834 E. Pond View Way,Salt lake city,UT,84106
-Adrienne,Xx,rrthleen.oflaherty@jumpstartlab.com,8015505000,1213 Medical Plaza,Salt lake city,UT,84121
-Eileen,Ludmer,mhulger@jumpstartlab.com,8015505000,723 11th Avenue,Salt lake city,UT,84103
-Alex,Boozel,jyhiang@jumpstartlab.com,8015505000,220 A Street,Salt lake city,UT,84103
-Susan,Berkley,ceebst.4@jumpstartlab.com,8015505000,1033 Barbara Pl,Salt lake city,UT,84102
-Emma,Kopkin,sxcoffey@jumpstartlab.com,8015505000,1033 Barbara Pl,Salt lake city,UT,84102
-Kate,Armacost,hgle.Saud@jumpstartlab.com,8015505000,1033 Barbara Pl,Salt lake city,UT,84102
-Lindsey,Woolworth,eoeal@jumpstartlab.com,801 359-4000,350 south 200 east #406,Salt lake city,UT,84111
-Rich,Wynn,vkrenzo.serna@jumpstartlab.com,8015505000,2887 Wainwright Road,Salt lake city,UT,84109
+ ,first_Name,last_Name,Email_Address,HomePhone,Street,City,State,Zipcode
+1,Allison,Nguyen,arannon@jumpstartlab.com,6154385000,"3155 19th St NW",Washington,DC,20010
+2,Allison,Wilson,ntbennet@jumpstartlab.com,2019560000,"OCMR#1903",Oberlin,OH,44074
+3,Allison,Gray,aria@jumpstartlab.com,908-642-8000,"9 booth st.",Burlington,VT,05401
+4,Allison,Gracey,fhrlemail1@jumpstartlab.com,240 645 5000,"3000 Cathedral Ave, NW",Washington,DC,20008
+5,Allison,Orr,fub4@jumpstartlab.com,787-207-7000,"93 W Maynard",Columbus,OH,43202
+6,Allison,Hatch,motanugi@jumpstartlab.com,401-330-6000,"Box 3466, Brown University",Providence,RI,02912
+7,Allison,Lang,ldsonfillo@jumpstartlab.com,716-597-1000,"23 Romoda Dr.",Canton,NY,13617
+8,Allison,Turner,uyda@jumpstartlab.com,Invalid Phone,"Nason 112 1999 Burdett Ave",Troy,NY,12180
+9,Allison,Dolkart,ieim19@jumpstartlab.com,607-346-6000,"2021 F Street NW",Washington,DC,20052
+10,Allison,Robinson,xlrds@jumpstartlab.com,773-510-0000,"6120 N Nassau",Chicago,IL,60631
+11,Allison,Martell,sjrry.andrew@jumpstartlab.com,802-999-8000,"31 Spear St.",Burlington,VT,05405
+12,Allison,Milette,bhrowald@jumpstartlab.com,2023166000,"4576 Middlebury College",Middlebury,VT,05753
+13,Allison,Miller,splayton@jumpstartlab.com,718-305-4000,"899 Nowhere",Philadelphia,PA,19205
+14,Allison,Sinclair,bwjasway@jumpstartlab.com,914 391 0000,"415 harrisburg ave",Lancaster,PA,17604
+15,Allison,Wickman,nlsu@jumpstartlab.com,802-287-4000,"41 B Hartford Drive",North scituate,RI,02857
+16,Allison,Coronado,beblaaron01@jumpstartlab.com,805-448-1000,"2100 I Street, NW, GW University – Lafayette Hall #403",Washington,DC,20052
