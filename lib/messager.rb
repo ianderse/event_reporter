@@ -13,8 +13,22 @@ class Messager
     @output.puts "Queue loaded with results of the search."
   end
 
+  def queue_saved
+    @output.puts "Queue saved."
+  end
+
   def print_queue(queue)
     @output.puts queue.create_table
+  end
+
+  def print_sorted_queue(queue, param)
+    #can just do this from event_reporter?
+    queue.sort_queue(param)
+    @output.puts queue.create_table
+  end
+
+  def queue_size(queue)
+    @output.puts queue.size
   end
 
   def queue_cleared
@@ -48,6 +62,10 @@ class Messager
 
   def invalid_search
     @output.puts "Invalid search entered, please try again."
+  end
+
+  def invalid_save
+    @output.puts "Invalid save format, please use format 'save to <filename>'"
   end
 
   def no_directory_loaded

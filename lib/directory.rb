@@ -2,8 +2,6 @@ require_relative './require_helper'
 require_relative './find'
 require 'csv'
 
-#need to clean the headers by downcasing all of them
-
 class Directory
 
   attr_accessor :directory
@@ -21,7 +19,7 @@ class Directory
       @directory = csv_data.map do |row|
                       Contact.new(row)
                   end
-                  
+
     else
       "File does not exist."
     end
