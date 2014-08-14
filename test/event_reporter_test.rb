@@ -1,4 +1,3 @@
-gem 'minitest'
 require 'csv'
 require 'minitest/autorun'
 require_relative '../lib/event_reporter'
