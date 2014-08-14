@@ -8,6 +8,10 @@ class Messager
     @output.puts "Welcome to EventReporter"
   end
 
+  def command
+    @output.print "Please enter a command (Enter 'help' for list of commands): "
+  end
+
   def queue_loaded
     @output.puts "Queue loaded with results of the search."
   end
@@ -86,10 +90,6 @@ class Messager
   def quit
     @output.puts "Thank you for using EventReporter."
     @output.puts "Goodbye."
-  end
-
-  def command
-    @output.print "Please enter a command (Enter 'help' for list of commands): "
   end
 
   def explain_queue
