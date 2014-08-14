@@ -26,12 +26,6 @@ class FindTest < Minitest::Test
     assert_equal 1, @queue.results.size
   end
 
-  # def test_find_by_email_address
-  #   skip
-  #   @queue.results = @directory.find_by(:email_address, "arannon@jumpstartlab.com")
-  #   assert_equal 1, @queue.results.size
-  # end
-
   def test_find_by_home_phone
     @queue.results = @directory.find_by(:homephone, "6154385000")
     assert_equal 1, @queue.results.size
