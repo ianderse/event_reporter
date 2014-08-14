@@ -1,4 +1,4 @@
-class Messager
+class Messenger
   def initialize(input=$stdin, output=$stdout)
     @input = input
     @output = output

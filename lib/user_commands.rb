@@ -17,9 +17,9 @@ module UserCommands
     when command == 'queue'
       queue_command
     when quit?
-      @messager.quit
+      @messenger.quit
       # return 0
-    else @messager.invalid_command
+    else @messenger.invalid_command
     end
   end
 
@@ -34,14 +34,14 @@ module UserCommands
   def queue_command
     case attribute
     when nil
-      @messager.invalid_queue_command
+      @messenger.invalid_queue_command
     when 'print'
       queue_print
     when 'count'
-      @messager.queue_size(@queue.results)
+      @messenger.queue_size(@queue.results)
     when 'clear'
       @queue.clear
-      @messager.queue_cleared
+      @messenger.queue_cleared
     when 'save'
       queue_save
     end
@@ -49,7 +49,7 @@ module UserCommands
 
   def queue_print
     if criteria.nil?
-      @messager.print_queue(@queue)
+      @messenger.print_queue(@queue)
     elsif criteria == 'by'
       queue_print_by
     end
@@ -57,9 +57,9 @@ module UserCommands
 
   def queue_print_by
     if has_directory_methods? && directory_is_populated?
-      @messager.print_sorted_queue(@queue, criteria_two)
+      @messenger.print_sorted_queue(@queue, criteria_two)
     else
-      @messager.invalid_print
+      @messenger.invalid_print
     end
   end
 
@@ -69,10 +69,10 @@ module UserCommands
 
   def queue_save
     if criteria.nil?
-      @messager.invalid_save
+      @messenger.invalid_save
     else
       @queue.save(criteria_two)
-      @messager.queue_saved
+      @messenger.queue_saved
     end
   end
 
@@ -82,43 +82,43 @@ module UserCommands
 
   def find_command
     if attribute == nil
-      @messager.invalid_find
+      @messenger.invalid_find
     else
-      directory_is_populated? ? find_by : @messager.no_directory_loaded
+      directory_is_populated? ? find_by : @messenger.no_directory_loaded
     end
   end
 
   def find_by
     if @directory.find_by(attribute.to_sym, criteria) != "invalid"
       @queue.results = @directory.find_by(attribute.to_sym, criteria)
-      @messager.queue_loaded
+      @messenger.queue_loaded
     else
-      @messager.invalid_search
+      @messenger.invalid_search
     end
 
   end
 
   def loader(file_name = "event_attendees.csv")
-    #!@directory.file_exist?("data/" +"#{file_name}")? ? @messager.file_does_not_exist : begin @directory.load_content(file_name); @messager.content_loaded end
+    #!@directory.file_exist?("data/" +"#{file_name}")? ? @messenger.file_does_not_exist : begin @directory.load_content(file_name); @messenger.content_loaded end
 
     if !@directory.file_exist?("data/" +"#{file_name}")
-      @messager.file_does_not_exist
+      @messenger.file_does_not_exist
     else
       @directory.load_content(file_name)
-      @messager.content_loaded
+      @messenger.content_loaded
     end
   end
 
   def help(param)
     case param
     when nil
-      @messager.list_commands
+      @messenger.list_commands
     when "queue"
       help_queue
     when "load"
-      @messager.explain_load
+      @messenger.explain_load
     when "find"
-      @messager.explain_find
+      @messenger.explain_find
     end
   end
 
@@ -131,19 +131,19 @@ module UserCommands
 
     case param
     when nil
-      @messager.explain_queue
+      @messenger.explain_queue
     when 'count'
-      @messager.explain_queue_count
+      @messenger.explain_queue_count
     when 'printby'
-      @messager.explain_queue_print_by
+      @messenger.explain_queue_print_by
     when 'print'
-      @messager.explain_queue_print
+      @messenger.explain_queue_print
     when 'clear'
-      @messager.explain_queue_clear
+      @messenger.explain_queue_clear
     when 'saveto'
-      @messager.explain_queue_save_to
+      @messenger.explain_queue_save_to
     else
-      @messager.does_not_exist
+      @messenger.does_not_exist
     end
 
   end

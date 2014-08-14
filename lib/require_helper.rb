@@ -1,4 +1,4 @@
-require_relative './messager'
+require_relative './messenger'
 require_relative './queue'
 require_relative './contact'
 require_relative './directory'

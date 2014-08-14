@@ -6,7 +6,7 @@ class EventReporter
   include UserCommands
 
   def initialize(input, output)
-    @messager = Messager.new(input, output)
+    @messenger = Messenger.new(input, output)
     @queue = Queue.new
     @directory = Directory.new
     @input = input
@@ -14,9 +14,9 @@ class EventReporter
   end
 
   def run
-    @messager.welcome
+    @messenger.welcome
     until quit?
-      @messager.command
+      @messenger.command
       @choice = get_menu_input.split(' ')
       process_user_commands
     end
