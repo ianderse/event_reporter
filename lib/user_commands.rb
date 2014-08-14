@@ -109,7 +109,7 @@ module UserCommands
     end
   end
 
-  def help(param=nil)
+  def help(param)
     case param
     when nil
       @messager.list_commands
