@@ -18,7 +18,7 @@ module UserCommands
       queue_command
     when quit?
       @messager.quit
-      return 0
+      # return 0
     else @messager.invalid_command
     end
   end

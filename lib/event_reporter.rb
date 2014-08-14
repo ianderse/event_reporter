@@ -20,7 +20,7 @@ class EventReporter
       @choice = get_menu_input.split(' ')
       process_user_commands
     end
-    return 0
+    # return 0
   end
 
   def get_menu_input

@@ -2,5 +2,8 @@
 require_relative 'lib/event_reporter.rb'
 
 eventreporter  = EventReporter.new($stdin, $stdout)
-exit_status = eventreporter.run
-exit exit_status
+# try "echo $?" from the command line after running
+# and you'll see ruby automatically returns 0 for you
+# exit_status =
+eventreporter.run
+# exit exit_status
