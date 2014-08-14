@@ -18,8 +18,22 @@ class Contact
   def clean_phone(phone)
     if phone.nil?
       "No Phone"
-    elsif Phoner::Phone.valid?("+1"+phone)
-      phone
+    else check_number(phone)
+    end
+  end
+
+  def format_phone(phone)
+    digits = phone.gsub(/\D/, (' ')).ljust(10, '0')
+    "(#{digits[0..2]}) #{digits[3..5]}-#{digits[6..9]}"
+  end
+
+  def validate?(phone)
+    Phoner::Phone.valid?("+1"+phone)
+  end
+
+  def check_number(phone)
+    if validate?(phone)
+      format_phone(phone)
     else
       "Invalid Phone"
     end
