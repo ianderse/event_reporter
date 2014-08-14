@@ -1,46 +1,30 @@
 gem 'minitest'
 require 'csv'
 require 'minitest/autorun'
-require_relative '../lib/CSV_handler'
+require_relative '../lib/directory'
 
-class CSVHandlerTest < Minitest::Test
+class DirectoryTest < Minitest::Test
 
   def setup
-    @handler = CSVHandler.new
+    @directory = Directory.new
   end
 
   def test_it_can_load_CSV_file
-    content = @handler.load_content
-    assert_equal true, content.is_a?(CSV)
+    @directory.load_content("event_attendees.csv")
+    assert_equal 5175, @directory.directory.size
   end
 
   def test_it_can_load_a_different_CSV_file
-    content = @handler.load_content("sample_test.csv")
-    assert_equal true, content.is_a?(CSV)
+    @directory.load_content("sample.csv")
+    assert_equal 16, @directory.directory.size
   end
 
   def test_file_given_exists
-    assert_equal true, @handler.file_exist?("data/sample_test.csv")
+    assert_equal true, @directory.file_exist?("data/sample.csv")
   end
 
   def test_file_given_does_not_exist
-    refute @handler.file_exist?("notfile.csv")
-  end
-
-  def test_entire_load_process_works_for_existent_file
-    content = @handler.load_content
-    assert_equal true, content.is_a?(CSV)
-  end
-
-  def test_entire_load_process_does_not_work_for_nonexistent_file
-    assert_equal "File does not exist.", @handler.load_content("nonexistentfile.csv")
-  end
-
-  def test_it_can_print_content
-    skip
-    content = @handler.load_content
-    @handler.print_content(content)
-    assert_equal " ", @handler.print_content(content)
+    refute @directory.file_exist?("notfile.csv")
   end
 
 end

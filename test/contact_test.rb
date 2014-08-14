@@ -59,7 +59,7 @@ class ContactTest < Minitest::Test
   end
 
   def test_it_can_clean_an_invalid_phone_number
-    assert_equal "Invalid Phone Number", contact.clean_phone("123-123-12343324124")
+    assert_equal "Invalid Phone", contact.clean_phone("123-123-12343324124")
   end
 
   def test_it_can_clean_a_good_email_address

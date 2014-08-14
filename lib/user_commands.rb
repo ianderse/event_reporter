@@ -68,7 +68,7 @@ module UserCommands
   end
 
   def queue_save
-    if criteria.nil?
+    if criteria != 'as'
       @messenger.invalid_save
     else
       @queue.save(criteria_two)
