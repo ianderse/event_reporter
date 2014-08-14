@@ -123,10 +123,10 @@ module UserCommands
   end
 
   def help_queue
-    if @choice[3] != nil
-      param = @choice[2]+@choice[3]
+    if criteria_two != nil
+      param = criteria + criteria_two
     else
-      param = @choice[2]
+      param = criteria
     end
 
     case param
