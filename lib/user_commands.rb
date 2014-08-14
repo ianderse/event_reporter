@@ -89,8 +89,10 @@ module UserCommands
   end
 
   def find_by
-    if @directory.find_by(attribute.to_sym, criteria) != "invalid"
-      @queue.results = @directory.find_by(attribute.to_sym, criteria)
+    element = @choice[2..-1].join(' ')
+
+    if @directory.find_by(attribute.to_sym, element) != "invalid"
+      @queue.results = @directory.find_by(attribute.to_sym, element)
       @messenger.queue_loaded
     else
       @messenger.invalid_search
