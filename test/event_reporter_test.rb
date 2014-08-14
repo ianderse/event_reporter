@@ -24,7 +24,7 @@ queue save to <filename.csv> - export current queue to specified filename as a C
 find <attribute> <criteria> - load the queue with all records matching criteria for the given attribute (ie. find zipcode 20011).
 
 "
-    @event.help
+    @event.help(nil)
 
   assert_equal(@test_output.string, expected_help_output)
   end
